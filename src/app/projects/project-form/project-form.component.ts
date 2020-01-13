@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Project } from '../models/Project';
+import { Project } from '../../models/Project';
 
 @Component({
   selector: 'ngptt-project-form',

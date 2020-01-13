@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
-import { Project, priority } from '../models/Project';
+import { Project, priority } from '../../models/Project';
 
 @Component({
   selector: 'ngptt-project-search',
