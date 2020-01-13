@@ -7,13 +7,15 @@ import { SearchFilterPipe } from './shared/search-filter.pipe';
 import { AppComponent } from './app.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
+import { ProjectListComponent } from './project-list/project-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectComponent,
     SearchFilterPipe,
-    ProjectFormComponent
+    ProjectFormComponent,
+    ProjectListComponent
   ],
   imports: [
     BrowserModule,
