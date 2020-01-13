@@ -13,6 +13,7 @@ import { ProjectListComponent } from './projects/project-list/project-list.compo
 import { ProjectSearchComponent } from './projects/project-search/project-search.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HomeComponent } from './home/home.component';
     ProjectListComponent,
     ProjectSearchComponent,
     ProjectDetailComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
