@@ -1,4 +1,4 @@
-<div class="card-deck">
+<div class="card-columns">
     <div *ngFor="let project of projects" class="card"
         [ngClass]="{'border-info': project.done, 'border-warning': !project.done }">
         <div class="card-body">
