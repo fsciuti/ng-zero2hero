@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 import { Project } from '../models/Project';
 
 @Component({
   selector: 'ngptt-project',
-  templateUrl: './project.component.html',
+  templateUrl: './project-container.component.html',
   styles: [`
     .form-control.ng-invalid.ng-touched {
         border: 1px solid red;
     }
   `]
 })
-export class ProjectComponent implements OnInit {
+export class ProjectContainerComponent implements OnInit {
   projects: Project[] = [
     {
       id: 1,
