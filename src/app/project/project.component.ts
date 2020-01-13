@@ -6,7 +6,11 @@ import { Project } from '../models/Project';
 @Component({
   selector: 'ngptt-project',
   templateUrl: './project.component.html',
-  styles: []
+  styles: [`
+    .form-control.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+  `]
 })
 export class ProjectComponent implements OnInit {
   projects: Project[] = [
