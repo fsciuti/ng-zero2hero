@@ -24,16 +24,15 @@
 </div>
 <hr />
 
-<div class="card-columns" *ngIf="projects?.length > 0 ; else noProjects">
-    <div
-        *ngFor="let project of projects
+<div class="card-deck" *ngIf="projects?.length > 0 ; else noProjects">
+    <div *ngFor="let project of projects
                 |  searchFilter: 'name' : filterName.value 
                 |  searchFilter: 'priority' : filterPriority.value 
-                |  searchFilter: 'done' : filterDone.value"
-        class="card" 
+                |  searchFilter: 'done' : filterDone.value" class="card"
         [ngClass]="{'border-info': project.done, 'border-warning': !project.done }">
         <div class="card-body">
-            <h5 class="card-title"><span class="badge badge-light float-right">{{ project.code }}</span>{{ project.name }}</h5>
+            <h5 class="card-title"><span
+                    class="badge badge-light float-right">{{ project.code }}</span>{{ project.name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">
                 <small>{{ project.start | date: 'dd/MM/yyyy' }}</small>
                 <small *ngIf="project.end"> - {{ project.end | date: 'dd/MM/yyyy' }}</small>
@@ -41,11 +40,50 @@
             <p class="card-text">{{ project.description }}</p>
             <a href="#" class="btn btn-primary btn-sm" (click)="selectProject(project)">Vai al Progetto</a>
         </div>
-    </div
-    >
+    </div>
 </div>
 
 <p *ngIf="selectedProject">{{selectedProject.code}} - {{selectedProject.name}}</p>
+
+<hr />
+<form #f="ngForm" (ngSubmit)="submitProjectForm(f)">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Nome" required ngModel
+                #nameField="ngModel">
+            <p class="text-danger" *ngIf="nameField.invalid && nameField.touched"><small>Il campo è richiesto</small>
+            </p>
+        </div>
+
+        <div class="form-group col-md-6">
+            <select class="form-control" name="priority" required ngModel #priorityField="ngModel">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <p class="text-danger" *ngIf="priorityField.invalid && priorityField.touched"><small>Il campo è
+                    richiesto</small></p>
+        </div>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" name="description" placeholder="Descrizione" required ngModel
+            #descriptionField="ngModel">
+        </textarea>
+        <p class="text-danger" *ngIf="descriptionField.invalid && descriptionField.touched"><small>Il campo è
+                richiesto</small></p>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="date" name="start" class="form-control" placeholder="Data Inizio" required ngModel
+                #dateField="ngModel">
+            <p class="text-danger" *ngIf="dateField.invalid && dateField.touched"><small>Il campo è richiesto</small>
+            </p>
+        </div>
+        <div class="form-group col-md-6">
+        </div>
+    </div>
+    <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Crea</button>
+</form>
 
 <ng-template #noProjects>
     <p>Non è presente nessun progetto</p>
