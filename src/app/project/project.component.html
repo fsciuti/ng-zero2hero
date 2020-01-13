@@ -1,34 +1,15 @@
 <div>
     <h2>I miei progetti</h2>
     <hr />
-    <div class="row">
-        <div class="col">
-            <input class="form-control" name="projectName" placeholder="cerca progetto" (input)='true' #filterName />
-        </div>
-        <div class="col">
-            <select class="form-control" #filterPriority (input)='true'>
-                <option></option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-        </div>
-        <div class="col">
-            <select class="form-control" #filterDone (input)='true'>
-                <option></option>
-                <option value="true">Done</option>
-                <option value="false">In progress</option>
-            </select>
-        </div>
-    </div>
+    <ngptt-project-search (searching)="searchProject($event)"></ngptt-project-search>
 </div>
 <hr />
 
 <div class="card-deck" *ngIf="projects?.length > 0 ; else noProjects">
     <div *ngFor="let project of projects
-                |  searchFilter: 'name' : filterName.value 
-                |  searchFilter: 'priority' : filterPriority.value 
-                |  searchFilter: 'done' : filterDone.value" class="card"
+                |  searchFilter: 'name' : searchedProject?.name 
+                |  searchFilter: 'priority' : searchedProject?.priority 
+                |  searchFilter: 'done' : searchedProject?.done" class="card"
         [ngClass]="{'border-info': project.done, 'border-warning': !project.done }">
         <div class="card-body">
             <h5 class="card-title"><span

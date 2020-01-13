@@ -49,6 +49,7 @@ export class ProjectComponent implements OnInit {
   ];
 
   selectedProject: Project;
+  searchedProject: Project;
 
   constructor() { }
 
@@ -67,5 +68,9 @@ export class ProjectComponent implements OnInit {
       tasks: [],
       ...project
     });
+  }
+
+  searchProject(project: Project) {
+    this.searchedProject = project;
   }
 }

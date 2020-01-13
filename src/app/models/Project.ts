@@ -1,5 +1,7 @@
 import Task from './Task';
 
+export type priority = 'low' | 'medium' | 'high'
+
 export interface Project {
     id: number;
     code: string;
@@ -7,7 +9,7 @@ export interface Project {
     description?: string;
     start: Date;
     end?: Date;
-    priority: 'low' | 'medium' | 'high';
+    priority: priority;
     done: boolean;
     tasks: Task[]
 }
