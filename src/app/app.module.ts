@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { SearchFilterPipe } from './shared/search-filter.pipe';
 
@@ -13,7 +14,8 @@ import { ProjectComponent } from './project/project.component';
     SearchFilterPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
