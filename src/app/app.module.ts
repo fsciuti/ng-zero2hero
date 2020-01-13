@@ -10,6 +10,7 @@ import { ProjectFormComponent } from './projects/project-form/project-form.compo
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { ProjectSearchComponent } from './projects/project-search/project-search.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProjectDetailComponent } from './projects/project-detail/project-detail
     ProjectFormComponent,
     ProjectListComponent,
     ProjectSearchComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
