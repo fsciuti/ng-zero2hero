@@ -1,7 +1,10 @@
-<div>
-    <h2>I miei progetti</h2>
-    <hr />
-    <ngptt-project-search (searching)="searchProject($event)"></ngptt-project-search>
+<div class="row mt-5 justify-content-end">
+    <div class="col-8">
+        <h2 class="">I miei progetti</h2>
+    </div>
+    <div class="col text-right">
+        <button class="btn btn-primary" routerLink="/">Torna ad Home</button>
+    </div>
 </div>
 <hr />
 <ngptt-project-list 
@@ -12,8 +15,6 @@
                     | searchFilter:'done':searchedProject?.done"
     (selected)="selectProject($event)">
 </ngptt-project-list>
-<hr />
-<ngptt-project-detail [project]="selectedProject"></ngptt-project-detail>
 <hr>
 <ngptt-project-form (submitted)="addProject($event)"></ngptt-project-form>
 
