@@ -14,6 +14,7 @@ import { ProjectSearchComponent } from './projects/project-search/project-search
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SectionHeaderComponent } from './shared/components/section-header/section-header.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ProjectSearchComponent,
     ProjectDetailComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    SectionHeaderComponent
   ],
   imports: [
     BrowserModule,
