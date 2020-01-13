@@ -1,8 +1,39 @@
+<div>
+    <h2>I miei progetti</h2>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <input class="form-control" name="projectName" placeholder="cerca progetto" (input)='true' #filterName />
+        </div>
+        <div class="col">
+            <select class="form-control" #filterPriority (input)='true'>
+                <option></option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-control" #filterDone (input)='true'>
+                <option></option>
+                <option value="true">Done</option>
+                <option value="false">In progress</option>
+            </select>
+        </div>
+    </div>
+</div>
+<hr />
+
 <div class="card-columns" *ngIf="projects?.length > 0 ; else noProjects">
-    <div *ngFor="let project of projects" class="card" [ngClass]="{'border-info': project.done, 'border-warning': !project.done }">
+    <div
+        *ngFor="let project of projects
+                |  searchFilter: 'name' : filterName.value 
+                |  searchFilter: 'priority' : filterPriority.value 
+                |  searchFilter: 'done' : filterDone.value"
+        class="card" 
+        [ngClass]="{'border-info': project.done, 'border-warning': !project.done }">
         <div class="card-body">
-            <h5 class="card-title"><span class="badge badge-light float-right">{{ project.code }}</span>
-                {{ project.name }}</h5>
+            <h5 class="card-title"><span class="badge badge-light float-right">{{ project.code }}</span>{{ project.name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">
                 <small>{{ project.start | date: 'dd/MM/yyyy' }}</small>
                 <small *ngIf="project.end"> - {{ project.end | date: 'dd/MM/yyyy' }}</small>
@@ -10,7 +41,8 @@
             <p class="card-text">{{ project.description }}</p>
             <a href="#" class="btn btn-primary btn-sm" (click)="selectProject(project)">Vai al Progetto</a>
         </div>
-    </div>
+    </div
+    >
 </div>
 
 <p *ngIf="selectedProject">{{selectedProject.code}} - {{selectedProject.name}}</p>
