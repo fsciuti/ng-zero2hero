@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { SearchFilterPipe } from './shared/search-filter.pipe';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { ProjectContainerComponent } from './projects/project-container/project-container.component';
 import { ProjectFormComponent } from './projects/project-form/project-form.component';
@@ -25,7 +27,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
