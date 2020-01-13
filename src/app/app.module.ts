@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectSearchComponent } from './project-search/project-search.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProjectListComponent } from './project-list/project-list.component';
     ProjectComponent,
     SearchFilterPipe,
     ProjectFormComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    ProjectSearchComponent
   ],
   imports: [
     BrowserModule,
