@@ -8,10 +8,12 @@
                 <small *ngIf="project.end"> - {{ project.end | date: 'dd/MM/yyyy' }}</small>
             </h6>
             <p class="card-text">{{ project.description }}</p>
-            <a href="#" class="btn btn-primary btn-sm">Vai al Progetto</a>
+            <a href="#" class="btn btn-primary btn-sm" (click)="selectProject(project)">Vai al Progetto</a>
         </div>
     </div>
 </div>
+
+<p *ngIf="selectedProject">{{selectedProject.code}} - {{selectedProject.name}}</p>
 
 <ng-template #noProjects>
     <p>Non è presente nessun progetto</p>

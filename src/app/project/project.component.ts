@@ -43,9 +43,15 @@ export class ProjectComponent implements OnInit {
     },
   ];
 
+  selectedProject: Project;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectProject(project: Project) {
+    this.selectedProject = project;
   }
 
 }
