@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Project } from '../../models/Project';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'ngptt-project',
@@ -12,61 +13,23 @@ import { Project } from '../../models/Project';
   `]
 })
 export class ProjectContainerComponent implements OnInit {
-  projects: Project[] = [
-    {
-      id: 1,
-      code: 'NHusYJl',
-      name: 'Progetto Alpha',
-      description: 'Lorem ipsum dolor sit amet.',
-      start: new Date(2019, 1, 30),
-      end: new Date(2019, 3, 15),
-      priority: 'medium',
-      done: true,
-      tasks: []
-    },
-    {
-      id: 2,
-      code: 'SJieYKl',
-      name: 'Progetto Beta',
-      description: 'Lorem ipsum dolor sit amet.',
-      start: new Date(2019, 3, 30),
-      end: new Date(2019, 6, 15),
-      priority: 'low',
-      done: true,
-      tasks: []
-    },
-    {
-      id: 3,
-      code: 'POjeGBs',
-      name: 'Progetto Gamma',
-      description: 'Lorem ipsum dolor sit amet.',
-      start: new Date(2019, 8, 15),
-      priority: 'low',
-      done: false,
-      tasks: []
-    },
-  ];
+  projects: Project[] = [];
 
   selectedProject: Project;
   searchedProject: Project;
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
+      this.projects = this.projectService.getAll();
   }
 
   selectProject(project: Project) {
-    this.selectedProject = project;
+    this.selectedProject = this.projectService.get(project.id);
   }
 
-  addNewProject(project: Project) {
-    this.projects.push({
-      id: this.projects.length,
-      code: Math.random().toString(36).replace('0.', '').substring(2, 9),
-      done: false,
-      tasks: [],
-      ...project
-    });
+  addProject(project: Project) {
+    this.projectService.add(project);
   }
 
   searchProject(project: Project) {
