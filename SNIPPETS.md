@@ -1,6 +1,6 @@
 ## mock data
 ```
-{
+      {
           id: 1,
           code: 'NHusYJl',
           name: 'Progetto Alpha',
@@ -31,7 +31,7 @@
           priority: 'low',
           done: false,
           tasks: []
-      },
+},
 ```
 
 ```
@@ -239,114 +239,3 @@ export class SearchFilterPipe implements PipeTransform {
       *ngIf="project?.end">- Data Fine: {{project?.end | date:'dd/MM/yyyy'}}</span></p>
 </div>
   ```
-
-## step-11-reactiveform
-#### project-detail.component.html
-
-```
-<table class="table table-sm" *ngIf="project.tasks.length; else notasks">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Data Inizio</th>
-        <th scope="col">Durata (minuti)</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><span class="badge">F</span></td>
-      </tr>
-    </tbody>
-  </table>
-  ```
-
-  ```
-  <div class="row" *ngIf="editMode">
-  <div class="col">
-    <form>
-      <div class="form-row">
-        <div class="col form-group">
-          <button type="submit" class="btn btn-primary btn-sm">Salva le Modifiche</button>
-          <a class="btn btn-light btn-sm">Annulla</a>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col form-group">
-          <input type="text" class="form-control" placeholder="Code" >
-          <p class="text-danger">
-            <small>Il campo è richiesto</small></p>
-        </div>
-        <div class="col-md-6 form-group">
-          <input type="text" class="form-control" placeholder="Nome">
-          <p class="text-danger">
-            <small>Il campo è richiesto</small></p>
-        </div>
-        <div class="col form-group">
-          <select class="form-control">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-          <p class="text-danger"><small>Il campo è richiesto</small></p>
-        </div>
-      </div>
-      <div>
-        <div class="form-group">
-          <textarea class="form-control" placeholder="Descrizione">
-                </textarea>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <input type="date" class="form-control" placeholder="Data Inizio">
-            <p class="text-danger"><small>Il campo è richiesto</small></p>
-          </div>
-          <div class="form-group col-md-6">
-            <input type="date" class="form-control" placeholder="Data Fine">
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div>
-        <div class="row">
-          <div class="col">
-            <h4>Tasks</h4>
-          </div>
-          <div class="col text-right">
-            <button class="btn btn-light btn-sm">Aggiungi
-              Task</button>
-          </div>
-        </div>
-        <hr />
-        <div class="form-row align-items-center">
-          <div class="col">
-            <input type="text" class="form-control">
-          </div>
-          <div class="col">
-            <input type="date" class="form-control">
-          </div>
-          <div class="col">
-            <input type="number" class="form-control">
-          </div>
-          <div class="col-auto">
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input">
-              <label class="form-check-label" for="exampleCheck1">Fatturabile</label>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="form-check">
-              <span class="badge badge-danger">x</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-```
