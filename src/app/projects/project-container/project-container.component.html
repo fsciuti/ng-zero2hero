@@ -1,4 +1,8 @@
 <ngptt-section-header [title]="'I miei progetti'" [button]="{ label: 'Torna ad Home', link: '/', type: 'btn-primary' }"></ngptt-section-header>
+<ngptt-project-search (searching)="searchProject($event)"></ngptt-project-search>
+<hr/>
+<ngptt-project-form [quickMode]="true" (submitted)="addProject($event)"></ngptt-project-form>
+<hr>
 <ng-container *ngIf="(projectService.getAll() | async) as projects">
     <ngptt-project-list 
         *ngIf="projects.length > 0 ; else noProjects"
@@ -9,8 +13,6 @@
         (selected)="selectProject($event)">
     </ngptt-project-list>
 </ng-container>
-<hr>
-<ngptt-project-form [quickMode]="true" (submitted)="addProject($event)"></ngptt-project-form>
 
 <ng-template #noProjects>
     <p>Non è presente nessun progetto</p>
