@@ -13,6 +13,7 @@ import { ProjectService } from '../project.service';
 })
 export class ProjectDetailComponent implements OnInit {
   project$: Observable<Project>;
+  editMode = false;
 
   constructor(private route: ActivatedRoute, private projectService: ProjectService) { }
 
@@ -20,5 +21,14 @@ export class ProjectDetailComponent implements OnInit {
     this.project$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => this.projectService.get(+params.get('id')))
     );
+  }
+
+  changeEditMode() {
+    this.editMode = !this.editMode;
+  }
+
+  updateProject(project: Project) {
+    this.projectService.update(project);
+    this.changeEditMode();
   }
 }
