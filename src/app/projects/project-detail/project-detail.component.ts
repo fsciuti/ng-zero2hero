@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { Project } from '../../models/Project';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'ngptt-project-detail',
@@ -8,11 +12,13 @@ import { Project } from '../../models/Project';
   styleUrls: ['./project-detail.component.css']
 })
 export class ProjectDetailComponent implements OnInit {
-  @Input() project: Project;
+  project$: Observable<Project>;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private projectService: ProjectService) { }
 
   ngOnInit() {
+    this.project$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => this.projectService.get(+params.get('id')))
+    );
   }
-
 }
