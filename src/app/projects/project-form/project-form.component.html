@@ -1,13 +1,14 @@
 <form #f="ngForm" (ngSubmit)="submitProjectForm(f)">
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <input type="text" name="name" class="form-control" placeholder="Nome" required ngModel
+        <input type="hidden" name="id" class="form-control" placeholder="Nome" [(ngModel)]="project.id">
+        <div class="form-group col-md-4">
+            <input type="text" name="name" class="form-control" placeholder="Nome" required [(ngModel)]="project.name"
                 #nameField="ngModel">
             <p class="text-danger" *ngIf="nameField.invalid && nameField.touched"><small>Il campo è richiesto</small>
             </p>
         </div>
-        <div class="form-group col-md-6">
-            <select class="form-control" name="priority" required ngModel #priorityField="ngModel">
+        <div class="form-group col-md-2">
+            <select class="form-control" name="priority" required #priorityField="ngModel" [(ngModel)]="project.priority">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
@@ -16,23 +17,24 @@
                     richiesto</small>
             </p>
         </div>
-    </div>
-    <div class="form-group">
-        <textarea class="form-control" name="description" placeholder="Descrizione" required ngModel
-            #descriptionField="ngModel">
-          </textarea>
-        <p class="text-danger" *ngIf="descriptionField.invalid && descriptionField.touched"><small>Il campo è
-                richiesto</small></p>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <input type="date" name="start" class="form-control" placeholder="Data Inizio" required ngModel
-                #dateField="ngModel">
+        <div class="form-group col-md-3" [ngClass]="{ 'col-md-3': !quickMode,  'col-md-6': quickMode }">
+            <input type="date" name="start" class="form-control" placeholder="Data Inizio" required 
+                #dateField="ngModel" [(ngModel)]="project.start">
             <p class="text-danger" *ngIf="dateField.invalid && dateField.touched"><small>Il campo è richiesto</small>
             </p>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-3" *ngIf="!quickMode">
+            <input type="date" name="end" class="form-control" placeholder="Data Fine" required [(ngModel)]="project.end"
+                #dateEndField="ngModel">
+            <p class="text-danger" *ngIf="dateEndField.invalid && dateEndField.touched"><small>Il campo è richiesto</small>
+            </p>
         </div>
     </div>
-    <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Crea</button>
+    <div *ngIf="!quickMode" class="form-group">
+        <textarea class="form-control" name="description" placeholder="Descrizione" required [(ngModel)]="project.description"
+            #descriptionField="ngModel">
+          </textarea>
+        <p class="text-danger" *ngIf="descriptionField.invalid && descriptionField.touched"><small>Il campo è richiesto</small></p>
+    </div>
+    <button type="submit" [disabled]="f.invalid" class="btn btn-primary">{{buttonLabel}}</button>
 </form>
