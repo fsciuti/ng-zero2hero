@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Project } from '../../models/Project';
 import { ProjectService } from '../project.service';
@@ -16,12 +17,12 @@ export class ProjectContainerComponent implements OnInit {
   selectedProject: Project;
   searchedProject: Project;
 
-  constructor(public projectService: ProjectService) { }
+  constructor(public projectService: ProjectService, private router: Router) { }
 
   ngOnInit() {}
 
   selectProject(project: Project) {
-    this.selectedProject = this.projectService.get(project.id);
+    this.router.navigate(['/projects', 'detail', project.id]);
   }
 
   addProject(project: Project) {
