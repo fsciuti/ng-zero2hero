@@ -53,13 +53,13 @@ export class ProjectService {
   }
 
   add(project: Project) {
-      this.projects.push(project);
+      this.projects.push({...project, id: this.projects.length + 1});
       this.projectsSubject.next(this.projects.slice());
   }
 
   get(id: number): Observable<Project> {
       return this.projects$.pipe(
-        map((projects: Project[]) => projects.find(project => project.id === id))
+        map((projects: Project[]) => ({...projects.find(project => project.id === id)}))
       );
   }
 }
