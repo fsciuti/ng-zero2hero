@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Project } from '../models/Project';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,7 @@ export class ProjectService {
 
   constructor() { }
 
-  getAll() {
+  getAll(): Observable<Project[]>{
     return this.projects$;
   }
 
@@ -56,7 +57,9 @@ export class ProjectService {
       this.projectsSubject.next(this.projects.slice());
   }
 
-  get(id: number): Project | null {
-      return {...this.projects.find(project => project.id === id)};
+  get(id: number): Observable<Project> {
+      return this.projects$.pipe(
+        map((projects: Project[]) => projects.find(project => project.id === id))
+      );
   }
 }
