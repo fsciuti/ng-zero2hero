@@ -62,4 +62,9 @@ export class ProjectService {
         map((projects: Project[]) => ({...projects.find(project => project.id === id)}))
       );
   }
+
+  update(project: Project) {
+    this.projects = this.projects.map(p => p.id === project.id ? { ...p, ...project } : p);
+    this.projectsSubject.next(this.projects.slice());
+  }
 }
