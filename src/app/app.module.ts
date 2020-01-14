@@ -12,8 +12,8 @@ import { ProjectFormComponent } from './projects/project-form/project-form.compo
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { ProjectSearchComponent } from './projects/project-search/project-search.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
-import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './layout/home/home.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SectionHeaderComponent } from './shared/components/section-header/section-header.component';
 
 @NgModule({
